@@ -1,5 +1,7 @@
 package com.kevinthomasbradley.incidentapi.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.kevinthomasbradley.incidentapi.model.Incident;
@@ -51,4 +53,9 @@ public class IncidentService {
         incident.setStatus(Incident.Status.RESOLVED);
         return incidentRepository.save(incident);
     }
+
+    public List<Incident> getAllIncidents() {
+        return incidentRepository.findAll();
+    }
+    
 }
