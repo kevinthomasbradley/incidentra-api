@@ -1,6 +1,9 @@
 package com.kevinthomasbradley.incidentapi.model;
 
 import jakarta.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;

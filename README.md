@@ -89,3 +89,10 @@ curl -X PUT -H "Content-Type: application/json" -d '{
 ---
 
 For more details, see the source files in [`src/main/java/com/kevinthomasbradley/incidentapi`](src/main/java/com/kevinthomasbradley/incidentapi).
+
+
+TODO
+- fix user tests
+- add incident tests
+
+./mvnw test

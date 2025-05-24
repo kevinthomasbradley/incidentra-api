@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kevinthomasbradley.incidentapi.model.Incident;
-import com.kevinthomasbradley.incidentapi.model.User;
 import com.kevinthomasbradley.incidentapi.service.IncidentService;
 
 import lombok.Data;
