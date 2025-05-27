@@ -96,3 +96,6 @@ TODO
 - add incident tests
 
 ./mvnw test
+
+./mvnw clean install
+./mvnw spring-boot:run

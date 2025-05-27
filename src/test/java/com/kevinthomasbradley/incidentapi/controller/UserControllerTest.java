@@ -1,14 +1,13 @@
 package com.kevinthomasbradley.incidentapi.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kevinthomasbradley.incidentapi.model.User;
 import com.kevinthomasbradley.incidentapi.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
@@ -16,18 +15,23 @@ import java.util.Collections;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Unit tests for the UserController class.
+ * Uses MockMvc to simulate HTTP requests and Mockito to mock the UserService dependency.
+ */
 @WebMvcTest(UserController.class)
 class UserControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc; // MockMvc for performing HTTP requests in tests
 
-    @MockBean
-    private UserService userService;
+    @MockitoBean
+    private UserService userService; // Mocked UserService injected into the controller
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
+    /**
+     * Test the user creation endpoint.
+     * Mocks the service layer and verifies that a user can be created via POST /api/users.
+     */
     @Test
     void testCreateUser() throws Exception {
         User user = new User();
@@ -55,6 +59,10 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.username").value("john"));
     }
 
+    /**
+     * Test the endpoint for retrieving all users.
+     * Mocks the service layer and verifies that a GET request to /api/users returns a 200 OK status.
+     */
     @Test
     void testGetAllUsers() throws Exception {
         Mockito.when(userService.getAllUsers()).thenReturn(Collections.singletonList(new User()));

@@ -14,18 +14,28 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the UserService class.
+ * Uses Mockito to mock the UserRepository dependency.
+ */
 class UserServiceTest {
 
     @Mock
-    private UserRepository userRepository;
+    private UserRepository userRepository; // Mocked repository for user data
 
     @InjectMocks
-    private UserService userService;
+    private UserService userService; // Service under test
 
+    /**
+     * Initializes Mockito mocks before each test.
+     */
     public UserServiceTest() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test creating a user and verifying the returned user object.
+     */
     @Test
     void testCreateUser() {
         User user = new User();
@@ -38,9 +48,12 @@ class UserServiceTest {
 
         User created = userService.createUser("test", "pass", "test@example.com", "CITIZEN");
         assertEquals("test", created.getUsername());
-        assertEquals("CITIZEN", created.getRole());
+        assertEquals(User.Role.CITIZEN, created.getRole());
     }
 
+    /**
+     * Test retrieving all users.
+     */
     @Test
     void testGetAllUsers() {
         when(userRepository.findAll()).thenReturn(Collections.singletonList(new User()));
@@ -48,6 +61,9 @@ class UserServiceTest {
         assertEquals(1, users.size());
     }
 
+    /**
+     * Test retrieving a user by ID.
+     */
     @Test
     void testGetUserById() {
         User user = new User();

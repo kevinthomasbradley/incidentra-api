@@ -57,5 +57,10 @@ public class IncidentService {
     public List<Incident> getAllIncidents() {
         return incidentRepository.findAll();
     }
+
+    public Incident getIncidentById(Long incidentId) {
+        return incidentRepository.findById(incidentId)
+            .orElseThrow(() -> new RuntimeException("Incident not found"));
+    }
     
 }
