@@ -1,6 +1,8 @@
 package com.kevinthomasbradley.incidentapi.service;
 
 import com.kevinthomasbradley.incidentapi.model.Incident;
+import com.kevinthomasbradley.incidentapi.model.Incident.IncidentType;
+import com.kevinthomasbradley.incidentapi.model.User;
 import com.kevinthomasbradley.incidentapi.repository.IncidentRepository;
 import com.kevinthomasbradley.incidentapi.repository.UserRepository;
 
@@ -14,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 /**
@@ -44,9 +47,11 @@ class IncidentServiceTest {
     @Test
     void testCreateIncident() {
 
-        /*User user = new User();
-        user.setId(1L);
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        User user = new User();
+        user.setId(1L); // Match the ID used in createIncident
+        user.setEmail("john@example.com");
+        user.setRole(User.Role.CITIZEN);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user)); // Correct mock
 
         Incident incident = new Incident();
         incident.setDescription("Test incident");
@@ -60,7 +65,6 @@ class IncidentServiceTest {
         assertEquals("Test incident", created.getDescription());
         assertEquals(Incident.Status.REPORTED, created.getStatus());
         assertEquals(Incident.IncidentType.OTHER, created.getIncidentType());
-        //assertEquals("john@example.com", created.getCreatedBy().getEmail());*/
     }
 
     /**
