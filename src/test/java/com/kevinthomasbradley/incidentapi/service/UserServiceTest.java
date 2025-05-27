@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
+ * @author Kevin T. Bradley | kevin.thomas.bradley@gmail.com
  * Unit tests for the UserService class.
  * Uses Mockito to mock the UserRepository dependency.
  */

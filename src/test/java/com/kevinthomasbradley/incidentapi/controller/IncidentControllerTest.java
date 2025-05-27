@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
+ * @author Kevin T. Bradley | kevin.thomas.bradley@gmail.com
  * Unit tests for the IncidentController class.
  * Uses MockMvc to simulate HTTP requests and Mockito to mock the IncidentService dependency.
  */

@@ -20,6 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 /**
+ * @author Kevin T. Bradley | kevin.thomas.bradley@gmail.com
  * Unit tests for the IncidentService class.
  * Uses Mockito to mock the IncidentRepository dependency.
  */

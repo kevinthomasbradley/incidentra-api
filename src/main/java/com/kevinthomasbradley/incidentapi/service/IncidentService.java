@@ -11,13 +11,27 @@ import com.kevinthomasbradley.incidentapi.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @author Kevin T. Bradley | kevin.thomas.bradley@gmail.com
+ * Service class for managing incidents.
+ * Handles business logic related to creating, assigning, resolving, and retrieving incidents.
+ * Uses IncidentRepository and UserRepository for data access.
+ */
 @Service
 @RequiredArgsConstructor
 public class IncidentService {
     
     private final IncidentRepository incidentRepository;
     private final UserRepository userRepository;
-    
+
+    /**
+     * Creates a new incident reported by a citizen.
+     *
+     * @param description Description of the incident.
+     * @param citizenId   ID of the reporting citizen.
+     * @return The created Incident object.
+     * @throws RuntimeException if the citizen is not found or does not have the CITIZEN role.
+     */
     public Incident createIncident(String description, Long citizenId) {
         User citizen = userRepository.findById(citizenId)
             .filter(u -> u.getRole() == User.Role.CITIZEN)
@@ -28,7 +42,17 @@ public class IncidentService {
         incident.setCreatedBy(citizen);
         return incidentRepository.save(incident);
     }
-    
+
+    /**
+     * Assigns an incident to a dispatcher and a responder.
+     *
+     * @param incidentId   ID of the incident to assign.
+     * @param dispatcherId ID of the dispatcher assigning the incident.
+     * @param responderId  ID of the responder to whom the incident is assigned.
+     * @return The updated Incident object.
+     * @throws RuntimeException if the dispatcher, responder, or incident is not found,
+     *                          or if the users do not have the correct roles.
+     */
     public Incident assignIncident(Long incidentId, Long dispatcherId, Long responderId) {
         User dispatcher = userRepository.findById(dispatcherId)
             .filter(u -> u.getRole() == User.Role.DISPATCHER)
@@ -46,7 +70,14 @@ public class IncidentService {
         incident.setStatus(Incident.Status.ASSIGNED);
         return incidentRepository.save(incident);
     }
-    
+
+    /**
+     * Marks an incident as resolved.
+     *
+     * @param incidentId ID of the incident to resolve.
+     * @return The updated Incident object.
+     * @throws RuntimeException if the incident is not found.
+     */
     public Incident resolveIncident(Long incidentId) {
         Incident incident = incidentRepository.findById(incidentId)
             .orElseThrow(() -> new RuntimeException("Incident not found"));
@@ -54,10 +85,22 @@ public class IncidentService {
         return incidentRepository.save(incident);
     }
 
+    /**
+     * Retrieves all incidents.
+     *
+     * @return List of all Incident objects.
+     */
     public List<Incident> getAllIncidents() {
         return incidentRepository.findAll();
     }
 
+    /**
+     * Retrieves an incident by its ID.
+     *
+     * @param incidentId ID of the incident to retrieve.
+     * @return The Incident object.
+     * @throws RuntimeException if the incident is not found.
+     */
     public Incident getIncidentById(Long incidentId) {
         return incidentRepository.findById(incidentId)
             .orElseThrow(() -> new RuntimeException("Incident not found"));

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
+ * @author Kevin T. Bradley | kevin.thomas.bradley@gmail.com
  * Basic integration test to verify that the Spring application context loads successfully.
  * This test will fail if the application context cannot be started.
  */
