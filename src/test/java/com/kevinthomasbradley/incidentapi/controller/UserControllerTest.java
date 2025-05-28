@@ -5,6 +5,7 @@ import com.kevinthomasbradley.incidentapi.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -20,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Unit tests for the UserController class.
  * Uses MockMvc to simulate HTTP requests and Mockito to mock the UserService dependency.
  */
+@AutoConfigureMockMvc(addFilters = false) // disables security for tests
 @WebMvcTest(UserController.class)
 class UserControllerTest {
 

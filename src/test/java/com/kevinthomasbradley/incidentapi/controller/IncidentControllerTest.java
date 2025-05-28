@@ -7,6 +7,7 @@ import com.kevinthomasbradley.incidentapi.service.IncidentService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -22,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Unit tests for the IncidentController class.
  * Uses MockMvc to simulate HTTP requests and Mockito to mock the IncidentService dependency.
  */
+@AutoConfigureMockMvc(addFilters = false) // disables security for tests
 @WebMvcTest(IncidentController.class)
 class IncidentControllerTest {
 
