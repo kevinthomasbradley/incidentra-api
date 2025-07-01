@@ -1,4 +1,4 @@
-# Incidentra
+# Incidentra API
 Incidentra is a demo project that applies system design principles using various technologies (Spring Boot, Postgres, Kaftka, Elasticsearch, Nginix, ReactJS, React Native). It showcases practical application development and explores architectural concepts in a real-world context.
 
 ## Prerequisites
